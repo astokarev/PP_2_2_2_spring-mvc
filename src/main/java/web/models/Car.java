@@ -1,9 +1,10 @@
 package web.models;
 
+import org.springframework.stereotype.Controller;
 
-import org.springframework.stereotype.Component;
-
-@Component
+/*без аннотации выбрасывает NoSuchBeanDefinitionException
+Контроллер пытается получить доступ к бину который еще не создан, если я правильно понял*/
+@Controller
 public class Car {
 
     private String vendor;
