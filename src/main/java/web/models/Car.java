@@ -1,16 +1,27 @@
 package web.models;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.*;
 
-/*без аннотации выбрасывает NoSuchBeanDefinitionException
-Контроллер пытается получить доступ к бину который еще не создан, если я правильно понял*/
-@Component
+//Большоое спасибо за подробный комментарий, надеюсь я правильно разорбрался
+@Entity
+@Table(name = "cars")
 public class Car {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "vendor")
     private String vendor;
+
+    @Column(name = "model")
     private String model;
+    @Column(name = "date")
     private int date;
-    private static String header = "Vendor/" + ' ' + "Model/" + ' ' + "Date of production";
+
+
+    public static String header = "Vendor/" + ' ' + "Model/" + ' ' + "Date of production";
 
     public Car(String vendor, String model, int date) {
         this.vendor = vendor;
